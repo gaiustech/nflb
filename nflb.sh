@@ -3,7 +3,7 @@
 # Wrapper for leaving no files behind
 
 DIR=$(dirname "$(readlink -f "$0")")
-LIB=${DIR}/nflb.so
+LIB=${DIR}/libnflb.so
 
 if [ ! -x $LIB ]; then
     echo $0: Check $LIB

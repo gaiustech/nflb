@@ -11,7 +11,8 @@ modern way to do this would be with a container!
 Tested on CentOS 7.5, GCC 4.8.5
 
 ```
-$ gcc -fPIC -shared -o nflb.so nflb.c -ldl
+$ cmake .
+$ make
 $ ./nflb.sh python -c "from tempfile import mkstemp; [mkstemp() for x in range(10)]"
 Cleaning up /tmp/7XQmvc
 Cleaning up /tmp/tmp0mSl6W
