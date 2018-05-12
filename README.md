@@ -8,7 +8,7 @@ modern way to do this would be with a container!
 
 ### Usage:
 
-Tested on CentOS 7.5
+Tested on CentOS 7.5, GCC 4.8.5
 
 ```
 $ gcc -fPIC -shared -o nflb.so nflb.c -ldl
@@ -25,5 +25,10 @@ Cleaning up /tmp/tmpCfZ3ej
 Cleaning up /tmp/tmpY3AcqZ
 Cleaning up /tmp/tmpzcg1rB
 ```
+
+The first file in that list appears to be something Python creates for itself
+and deletes itself after.
+
+TODO: intercept the remaining syscalls, PR's welcome...
 
 _eof_
