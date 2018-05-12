@@ -13,12 +13,16 @@ static int (*real_open64)(const char *pathname, int flags, ...) = NULL;
 FILE* logfile;
 
 /* function executed when the .so is loaded */
-static void nflb_init() __attribute__((constructor));
-void nflb_init() {
+static void _nflb_init() __attribute__((constructor));
+void _nflb_init() {
   real_open64 = dlsym(RTLD_NEXT, "open64");
 
   char* filename = getenv("NFLB_FILE");
-  logfile = fdopen(real_open64(filename, O_WRONLY|O_SYNC), "w");
+  if (filename != NULL) {
+    logfile = fdopen(real_open64(filename, O_WRONLY|O_SYNC), "w");
+  } else {
+    logfile = stdout;
+  }
 }
 
 /* append created files to the list */
